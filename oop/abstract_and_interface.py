@@ -1,7 +1,7 @@
 from abc import ABC,abstractmethod
 
 ########################## ABSTRACT METHOD #########################################
-
+"""
 class Car(ABC):
     
     @abstractmethod
@@ -24,11 +24,11 @@ class Maruti(Car):
         print("Suzuki company")
         
              
-#obj=Maruti()
-#obj.color()
-#obj.company()
-#obj.wheels()
-        
+obj=Maruti()
+obj.color()
+obj.company()
+obj.wheels()
+"""     
 ################################### INTERFACE ############################
 
 class Car(ABC):
@@ -41,8 +41,14 @@ class Car(ABC):
     def company(self):
         pass  
         
+    @classmethod
     @abstractmethod
     def wheels(cls):
+        pass
+        
+    @staticmethod
+    @abstractmethod
+    def airBagSupport(stat):
         pass
 
 class Maruti(Car):
@@ -55,13 +61,21 @@ class Maruti(Car):
     def company(self):
         print("Suzuki company")
     
+    @classmethod
     def wheels(cls):
         print(f"I have {cls.wheel} wheels")
+        
+    @staticmethod
+    def airBagSupport(stat):
+        if stat:
+            print("I have air bags")
+        else:
+            print("I don't have air bags")
 
 
 
 obj=Maruti()
 obj.color()
 obj.company()
-obj.wheels()
-
+Maruti.wheels()
+Maruti.airBagSupport(False)
