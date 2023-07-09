@@ -2,27 +2,27 @@ from .main import Obervable
 
 class WeatherStationObservable(Obervable):
 
-    temp=0.0
-    objs=list()
+    _subscribers=list()
+
+    def __init__(self) -> None:
+        self._temp=0.0
 
     @classmethod
     def add(cls, obj: object) -> None:
-        cls.objs.append(obj)
+        cls._subscribers.append(obj)
 
     @classmethod
     def remove(cls, obj: object) -> None:
-        cls.objs.remove(obj)
+        cls._subscribers.remove(obj)
 
     def notify(self)->None:
-        for i in self.objs:
+        for i in self._subscribers:
             i.weather_update(self)
 
-    
-    def setTemp(cls,temps:float):
-        if cls.temp!=temps:
-            cls.temp=temps
-            cls.notify()
+    def sets(self,temps:float):
+        if self._temp!=temps:
+            self._temp=temps
+            self.notify()
 
-
-    def getTemp(cls):
-        return cls.temp
+    def gets(self):
+        return self._temp
