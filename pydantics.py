@@ -52,6 +52,9 @@ class Student(BaseModel):
     firstname:constr(min_length=1,max_length=50,strip_whitespace=True)
     lastname:constr(min_length=1,max_length=50,strip_whitespace=True)
     s_id:constr(min_length=1,max_length=20)=None
+    phone:conint()=None
+    password:constr(min_length=1,max_length=50,strip_whitespace=True)=None
+    cpassword:constr(min_length=1,max_length=50,strip_whitespace=True)=None
 
     @validator('s_id',always=True)
     def set_sid(cls,value,values):
@@ -59,11 +62,28 @@ class Student(BaseModel):
         if not value: #------------> indicates s_id value
             firstname=values['firstname']
             return firstname+str(randint(100,999))
+    
+    @validator('cpassword',always=True)
+    def password_validate(cls,value,values):
+        if value:
+            password=values['password']
+            if value==password:
+                return value
+            else:
+                raise ValueError("Passwords are mismatch")
+    
+    @validator('phone')
+    def phone_val(cls,value):
+        if value:
+            return str(value)
 
 data2={
-    "firstname":"Supratim",
-    "lastname":"Majumder"
+    "firstname":"Supratim Kumar",
+    "lastname":"Majumder",
+    "password":"1234",
+    "cpassword":"1234",
+    "phone":555
 }
 s=Student(**data2)
-print(s)
+print(type(s.phone))
 

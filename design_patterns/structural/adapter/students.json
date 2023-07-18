@@ -1,0 +1,13 @@
+{
+    "student": [{
+            "id": 101,
+            "name": "Utsav Chatterjee",
+            "age": 22
+        },
+        {
+            "id": 133,
+            "name": "Supratim Majumder",
+            "age": 21
+        }
+    ]
+}
