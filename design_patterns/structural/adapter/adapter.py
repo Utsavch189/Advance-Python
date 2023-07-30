@@ -102,5 +102,5 @@ class ConverterTxt:
         elif self.type=='XML':
             return ConverterXmlToTxt(file=self.file,key=self.key).convert_txt()
 
-c=ConverterTxt(file='students.json',key='student')
+c=ConverterTxt(file='students.xml',key='student')
 c.convert_txt()
