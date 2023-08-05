@@ -60,21 +60,10 @@ In the classic implementation of the Singleton Design pattern, we simply use the
 # classic implementation of Singleton Design pattern
 class Singleton:
 
-	__shared_instance = 'GeeksforGeeks'
-
-	@staticmethod
-	def getInstance():
-		"""Static Access Method"""
-		if Singleton.__shared_instance == 'GeeksforGeeks':
-			Singleton()
-		return Singleton.__shared_instance
-
-	def __init__(self):
-		"""virtual private constructor"""
-		if Singleton.__shared_instance != 'GeeksforGeeks':
-			raise Exception("This class is a singleton class !")
-		else:
-			Singleton.__shared_instance = self
+	def __new__(cls):
+		if not hasattr(cls, 'instance'):
+			cls.instance = super(Singleton, cls).__new__(cls)
+		return cls.instance
 
 
 # main method
@@ -84,8 +73,9 @@ if __name__ == "__main__":
 	obj = Singleton()
 	print(obj)
 
-	# pick the instance of the class
-	obj = Singleton.getInstance()
-	print(obj)
+	obj2=Singleton()
+	print(obj2)
+
+
 
 
