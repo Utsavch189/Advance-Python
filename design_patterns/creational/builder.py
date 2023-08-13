@@ -6,9 +6,9 @@ we don't need all parameters to create that object.
 
 class Burger:
 
-    sauces:str=None
-    letuces:str=None
-    cheeses:str=None
+    sauces:str="No"
+    letuces:str="No"
+    cheeses:str="No"
     number_of_pattys:int=0
 
     def __init__(self,inst) -> None:
@@ -22,9 +22,9 @@ class Burger:
     
     class BurgerBuilder:
 
-        sauce:str=None
-        letuce:str=None
-        cheese:str=None
+        sauce:str="No"
+        letuce:str="No"
+        cheese:str="No"
         number_of_patty:int=0
         
         def setSauce(self,sauce:str):
