@@ -4,7 +4,7 @@ import random
 def rand()->int:
     return random.randint(0,99)
 
-@dataclass(slots=True,frozen=True) #-----> slots=True means it will not allow extra attributes and frozen=True means after initialize values of a instance we can't update for that
+@dataclass(frozen=True) #-----> slots=True means it will not allow extra attributes and frozen=True means after initialize values of a instance we can't update for that
 class Person:
     name:str
     age:int
