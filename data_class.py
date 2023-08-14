@@ -16,3 +16,42 @@ p1=Person(name="supu",age=21)
 
 print(p)
 print(p1)
+
+data={
+    "name":"abc",
+    "age":12
+}
+p2=Person(**data)
+print(p2)
+
+
+@dataclass
+class Rectangle:
+    width: float
+    height: float
+
+    def __post_init__(self):
+        if self.width <= 0 or self.height <= 0:
+            raise ValueError("Width and height must be positive numbers")
+try:
+    print(Rectangle(-2,55))
+except Exception as e:
+    print(e)
+
+def calculate_area(width, height):
+    return width * height
+
+@dataclass
+class Rectangle:
+    width: int=field(default_factory=int)
+    height: int=field(default_factory=int)
+    area: int = field(default_factory=int)
+    area_function:object=field(default_factory=object)
+    def __post_init__(self):
+        if self.area == 0:
+            self.area = self.area_function(self.width, self.height)
+
+
+
+rectangle = Rectangle(area_function=calculate_area)
+print(rectangle.area)
