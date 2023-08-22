@@ -52,9 +52,10 @@ class Student(BaseModel):
     firstname:constr(min_length=1,max_length=50,strip_whitespace=True)
     lastname:constr(min_length=1,max_length=50,strip_whitespace=True)
     s_id:constr(min_length=1,max_length=20)=None
-    phone:conint()=None
+    phone:conint()
     password:constr(min_length=1,max_length=50,strip_whitespace=True)=None
     cpassword:constr(min_length=1,max_length=50,strip_whitespace=True)=None
+    optional:constr()=None
 
     @validator('s_id',always=True)
     def set_sid(cls,value,values):
@@ -76,6 +77,11 @@ class Student(BaseModel):
     def phone_val(cls,value):
         if value:
             return str(value)
+    
+    @validator('optional',allow_reuse=True,always=True)
+    def optionals(cls,value):
+        value='hi'
+        return value
 
 data2={
     "firstname":"Supratim Kumar",
@@ -84,6 +90,14 @@ data2={
     "cpassword":"1234",
     "phone":555
 }
-s=Student(**data2)
-print(type(s.phone))
+data3={
+    "firstname":"Utsav Kumar",
+    "lastname":"Chatterjee",
+    "password":"2235",
+    "cpassword":"2235",
+    "phone":741
+}
 
+print(Student(**data2).__dict__)
+
+print(type(Student(**data3)))
