@@ -4,6 +4,7 @@ from collections import Counter
 A counter is a sub-class of the dictionary. 
 It is used to keep the count of the elements in an iterable in the form of an unordered dictionary where the 
 key represents the element in the iterable and value represents the count of that element in the iterable.
+https://www.digitalocean.com/community/tutorials/python-counter-python-collections-counter
 """
 
 # With sequence of items  
