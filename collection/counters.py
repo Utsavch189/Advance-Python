@@ -19,7 +19,7 @@ print(Counter(A=3, B=5, C=2))
 
 # Example :
 
-string="santanu"
+string="saantanu"
 
 c=Counter(string)
 print(c)
@@ -34,3 +34,5 @@ n  :  2
 t  :  1
 u  :  1
 """
+print(c.most_common(1)) # [('a', 3)] --> most time occuring
+print(c.most_common()[:-2:-1]) # [('u', 1)] --> least time occuring
