@@ -2,6 +2,8 @@ from ctypes import *
 import time
 
 so_file='./a.so'
+# $ cc -fPIC -shared -o my_functions.so my_functions.c [to convert .so file]
+
 c_func=CDLL(so_file)
 
 start1=time.time()
