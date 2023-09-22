@@ -18,6 +18,8 @@ print(c.maps)
 print(c.keys())
 print(c.values())
 
+print("form of dict : ",dict(c))
+
 for k,v in c.items():
           print(k," : ",v)
 
